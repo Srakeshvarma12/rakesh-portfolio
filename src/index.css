@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+/* ===== GLOBAL RESET ===== */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* ===== HERO BASE ===== */
+.hero-bg {
+  position: relative;
+  min-height: 100vh;
+  background: transparent;
+  z-index: 10;
+}
+
+/* ===== PURPLE GLOW ===== */
+.hero-glow {
+  position: absolute;
+  bottom: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 80%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(168, 85, 247, 0.28),
+    rgba(0, 0, 0, 0) 70%
+  );
+  filter: blur(80px);
+  z-index: 1;
+}
+
+/* ===== GLASSMORPHISM ===== */
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+}
+
+/* ===== GRADIENT TEXT ===== */
+.gradient-text {
+  background: linear-gradient(90deg, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== LIVE BACKGROUND ===== */
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+}
+
+/* ===== NOISE ===== */
+.noise-layer {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -5;
+}
+
+/* ===== CURSOR ===== */
+body {
+  cursor: url("/cursor/purple-arrow.svg") 4 4, auto;
+}
+
+a,
+button {
+  cursor: url("/cursor/purple-arrow.svg") 4 4, pointer;
+}
+
+/* ===== FLOAT ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+/* ===== NAV ICON ===== */
+.nav-icon {
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.25s ease;
+}
+
+.nav-icon:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.6));
+}
+
+/* ===== TECH PILLS ===== */
+.tech-pill {
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.85rem;
+  color: #e5e7eb;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.tech-pill:hover {
+  border-color: #a855f7;
+  color: #a855f7;
+}
+
+/* ================================================= */
+/* ===== SEEKING BADGE (FIXED + SHARP SHINE) ===== */
+/* ================================================= */
+
+.seeking-badge {
+  position: relative;
+  display: inline-block;
+
+  padding: 8px 18px;
+  border-radius: 9999px;
+
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+
+  overflow: hidden; /* CLIP SHINE */
+}
+
+/* CRYSTAL SHARP SHINE */
+.seeking-badge::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -30%;
+
+  height: 100%;
+  width: 6%; /* thin & sharp */
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #ffffff 50%,
+    transparent 100%
+  );
+
+  transform: skewX(-20deg);
+  opacity: 1;
+
+  animation: badge-shine 2.2s linear infinite;
+  pointer-events: none;
+}
+
+/* Shine stays STRICTLY INSIDE */
+/* @keyframes badge-shine {
+  0% {
+    transform: translateX(-100%) skewX(-20deg);
+  }
+  40% {
+    transform: translateX(110%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(110%) skewX(-20deg);
+  }
+} */
+@keyframes badge-shine {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 130%;
+  }
+}
