@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-/* ============================= */
-/* ===== GLOBAL LAYOUT LOCK ==== */
-/* ============================= */
+/* ================================================= */
+/* 🔒 GLOBAL LAYOUT LOCK (CRITICAL) */
+/* ================================================= */
 
 *,
 *::before,
@@ -15,7 +15,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  max-width: 100%;
+  max-width: 100vw;
   overflow-x: hidden;
 
   background: #000;
@@ -31,20 +31,24 @@ body {
   position: relative;
 }
 
-/* ============================= */
-/* ===== APP WRAPPER ========== */
-/* ============================= */
+/* ================================================= */
+/* 🔒 APP WRAPPER — SINGLE SOURCE OF TRUTH */
+/* ================================================= */
 
 .app-wrapper {
   width: 100%;
-  max-width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
   overflow-x: hidden;
   position: relative;
 }
 
-/* ============================= */
-/* ===== HERO BASE ============ */
-/* ============================= */
+/* ================================================= */
+/* HERO BASE */
+/* ================================================= */
 
 .hero-bg {
   position: relative;
@@ -54,15 +58,16 @@ body {
   z-index: 10;
 }
 
-/* ===== PURPLE GLOW (SAFE) ==== */
-/* 🔒 No overflow, no shifting */
+/* ================================================= */
+/* PURPLE GLOW — SAFE, NO SHIFT */
+/* ================================================= */
 
 .hero-glow {
   position: absolute;
   bottom: -40%;
   left: 50%;
   transform: translateX(-50%);
-  width: min(120%, 1400px); /* 🔥 prevents viewport overflow */
+  width: min(120%, 1400px);
   height: 80%;
   background: radial-gradient(
     ellipse at center,
@@ -74,9 +79,9 @@ body {
   pointer-events: none;
 }
 
-/* ============================= */
-/* ===== GLASSMORPHISM ======== */
-/* ============================= */
+/* ================================================= */
+/* GLASSMORPHISM */
+/* ================================================= */
 
 .glass {
   background: rgba(255, 255, 255, 0.06);
@@ -85,9 +90,9 @@ body {
   border-radius: 20px;
 }
 
-/* ============================= */
-/* ===== GRADIENT TEXT ======== */
-/* ============================= */
+/* ================================================= */
+/* GRADIENT TEXT */
+/* ================================================= */
 
 .gradient-text {
   background: linear-gradient(90deg, #a855f7, #ec4899);
@@ -95,9 +100,9 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* ============================= */
-/* ===== LIVE BACKGROUND ====== */
-/* ============================= */
+/* ================================================= */
+/* LIVE BACKGROUND */
+/* ================================================= */
 
 .animated-bg {
   position: fixed;
@@ -107,9 +112,9 @@ body {
   overflow: hidden;
 }
 
-/* ============================= */
-/* ===== NOISE LAYER ========== */
-/* ============================= */
+/* ================================================= */
+/* NOISE LAYER */
+/* ================================================= */
 
 .noise-layer {
   position: fixed;
@@ -119,9 +124,9 @@ body {
   z-index: -5;
 }
 
-/* ============================= */
-/* ===== CURSOR =============== */
-/* ============================= */
+/* ================================================= */
+/* CURSOR */
+/* ================================================= */
 
 body {
   cursor: url("/cursor/purple-arrow.svg") 4 4, auto;
@@ -133,9 +138,9 @@ button {
   will-change: transform;
 }
 
-/* ============================= */
-/* ===== FLOAT ANIMATION ====== */
-/* ============================= */
+/* ================================================= */
+/* FLOAT ANIMATION */
+/* ================================================= */
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
@@ -146,9 +151,9 @@ button {
   animation: float 8s ease-in-out infinite;
 }
 
-/* ============================= */
-/* ===== NAV ICONS ============ */
-/* ============================= */
+/* ================================================= */
+/* NAV ICONS */
+/* ================================================= */
 
 .nav-icon {
   color: rgba(255, 255, 255, 0.8);
@@ -161,9 +166,9 @@ button {
   filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.6));
 }
 
-/* ============================= */
-/* ===== TECH PILLS =========== */
-/* ============================= */
+/* ================================================= */
+/* TECH PILLS */
+/* ================================================= */
 
 .tech-pill {
   padding: 6px 14px;
@@ -180,9 +185,9 @@ button {
   color: #a855f7;
 }
 
-/* ============================= */
-/* ===== SEEKING BADGE ======== */
-/* ============================= */
+/* ================================================= */
+/* SEEKING BADGE — CRYSTAL SHARP SHINE */
+/* ================================================= */
 
 .seeking-badge {
   position: relative;
@@ -221,19 +226,7 @@ button {
 }
 
 /* ================================================= */
-/* ===== GLOBAL CENTERED LAYOUT CONTAINER ===== */
-/* ================================================= */
-
-.app-container {
-  width: 100%;
-  max-width: 1200px;   /* controls content width */
-  margin: 0 auto;     /* centers horizontally */
-  padding: 0 24px;    /* safe padding on small screens */
-  box-sizing: border-box;
-}
-
-/* ================================================= */
-/* ===== FIXED & CENTERED NAVBAR ===== */
+/* FIXED & CENTERED NAVBAR */
 /* ================================================= */
 
 .navbar-fixed {
@@ -249,16 +242,6 @@ button {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
-
   display: flex;
   justify-content: center;
-}
-
-/* ===== GLOBAL WIDTH LOCK (FINAL SAFETY) ===== */
-.app-wrapper {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
