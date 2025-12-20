@@ -53,12 +53,13 @@ export default function Contact() {
       className="min-h-screen px-6 py-24 flex items-center justify-center"
     >
       <motion.div
-        initial={{ opacity: 0, y: 80 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-        viewport={{ once: false, amount: 0.3 }}
-        className="glass max-w-4xl w-full rounded-3xl p-10 md:p-14"
-      >
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  viewport={{ once: false, amount: 0.3 }}
+  className="glass max-w-4xl w-full rounded-3xl p-10 md:p-14"
+>
+
         {/* Heading */}
         <h2 className="text-3xl md:text-4xl font-bold mb-3">
           Contact <span className="gradient-text">Me</span>
