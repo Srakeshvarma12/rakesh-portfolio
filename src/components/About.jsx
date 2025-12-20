@@ -25,9 +25,18 @@ export default function About() {
               className="w-44 h-44 rounded-2xl object-cover border border-white/20 mb-6"
             />
 
-            <p className="text-gray-300 leading-relaxed"> I’m a Computer Science Engineering student with strong fundamentals in Python and frontend development. I enjoy building clean, responsive interfaces and logic-driven applications. </p> <br />
-            <p className="text-gray-300 leading-relaxed "> Through internships and academic projects, I’ve gained hands-on experience with modern web technologies, version control, and structured development practices. </p>
+           <p className="text-gray-300 leading-relaxed">
+            I’m a Computer Science Engineering student with strong fundamentals
+            in Python and frontend development. I enjoy building clean,
+            responsive interfaces and logic-driven applications.
+          </p>
 
+          <p className="text-gray-300 leading-relaxed ">
+            Through internships and academic projects, I’ve gained hands-on
+            experience with modern web technologies, version control, and
+            structured development practices.
+          </p>
+          
             <span className="text-sm text-gray-400 flex items-center gap-2 mt-4">
               📍 Andhra Pradesh, India
             </span>
