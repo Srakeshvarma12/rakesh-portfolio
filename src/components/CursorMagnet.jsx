@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 export default function CursorMagnet() {
   useEffect(() => {
-    const targets = document.querySelectorAll("a, button");
+    const targets = document.querySelectorAll("a:not(.nav-icon), button");
 
     const clamp = (value, min, max) =>
       Math.min(Math.max(value, min), max);

@@ -10,16 +10,26 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="app-wrapper">
+    <>
+      {/* Full-screen animated background */}
       <AnimatedBackground />
+
+      {/* Fixed navbar */}
       <Navbar />
+
+      {/* Cursor effect */}
       <CursorMagnet />
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Contact />
+
+      {/* ✅ GLOBAL CENTER WRAPPER */}
+      <main className="app-container">
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Contact />
+      </main>
+
       <Footer />
-    </div>
+    </>
   );
 }

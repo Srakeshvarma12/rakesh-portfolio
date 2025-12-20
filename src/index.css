@@ -219,3 +219,37 @@ button {
   0% { left: -30%; }
   100% { left: 130%; }
 }
+
+/* ================================================= */
+/* ===== GLOBAL CENTERED LAYOUT CONTAINER ===== */
+/* ================================================= */
+
+.app-container {
+  width: 100%;
+  max-width: 1200px;   /* controls content width */
+  margin: 0 auto;     /* centers horizontally */
+  padding: 0 24px;    /* safe padding on small screens */
+  box-sizing: border-box;
+}
+
+/* ================================================= */
+/* ===== FIXED & CENTERED NAVBAR ===== */
+/* ================================================= */
+
+.navbar-fixed {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  pointer-events: auto;
+}
+
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: flex;
+  justify-content: center;
+}
