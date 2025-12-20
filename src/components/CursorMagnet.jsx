@@ -2,36 +2,36 @@ import { useEffect } from "react";
 
 export default function CursorMagnet() {
   useEffect(() => {
-    const targets = document.querySelectorAll("a:not(.nav-icon), button");
+    // ❌ Disable on touch devices
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+      return;
+    }
 
-    const clamp = (value, min, max) =>
-      Math.min(Math.max(value, min), max);
+    const targets = document.querySelectorAll("a, button");
 
     const handleMouseMove = (e) => {
       targets.forEach((el) => {
         const rect = el.getBoundingClientRect();
-
         const x = e.clientX - (rect.left + rect.width / 2);
         const y = e.clientY - (rect.top + rect.height / 2);
 
         const distance = Math.sqrt(x * x + y * y);
 
-        if (distance < 100) {
-          const moveX = clamp(x * 0.08, -12, 12);
-          const moveY = clamp(y * 0.08, -12, 12);
-
-          el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        if (distance < 80) {
+          el.style.transform = `translate3d(${x * 0.05}px, ${y * 0.05}px, 0)`;
         } else {
-          el.style.transform = "translate(0px, 0px)";
+          el.style.transform = "translate3d(0, 0, 0)";
         }
       });
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      targets.forEach((el) => (el.style.transform = "translate(0px, 0px)"));
+      targets.forEach((el) => {
+        el.style.transform = "translate3d(0, 0, 0)";
+      });
     };
   }, []);
 

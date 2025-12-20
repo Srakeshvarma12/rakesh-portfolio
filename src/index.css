@@ -245,3 +245,32 @@ button {
   display: flex;
   justify-content: center;
 }
+
+/* ================================================= */
+/* 🎯 PERFORMANCE & MOTION POLISH */
+/* ================================================= */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Prevent accidental horizontal bounce */
+body {
+  overscroll-behavior-x: none;
+}
+
+/* GPU hint for animated elements */
+.animate-float,
+.seeking-badge::after,
+.nav-icon {
+  will-change: transform;
+}
