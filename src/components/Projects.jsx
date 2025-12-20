@@ -2,15 +2,23 @@ import { motion } from "framer-motion";
 
 export default function Projects() {
   return (
-    <motion.section
+    <section
       id="projects"
       className="min-h-screen flex items-center justify-center px-6"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ once: false, amount: 0.2 }}
     >
-      <div className="relative z-10 max-w-6xl w-full glass p-10 md:p-14">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="
+          relative z-10
+          max-w-6xl w-full
+          glass
+          p-10 md:p-14
+          will-change-transform
+        "
+      >
         <h2 className="text-3xl md:text-4xl font-bold mb-8">
           <span className="gradient-text">Projects</span>
         </h2>
@@ -20,12 +28,9 @@ export default function Projects() {
         </h3>
 
         <p className="text-gray-300 leading-relaxed mb-8">
-          • Built a machine-learning based decision support system to recommend
-          optimal wart treatment methods by balancing treatment cost and
-          effectiveness.
+          • Built a machine-learning based decision support system to recommend optimal wart treatment methods by balancing treatment cost and effectiveness.
           <br />
-          • Performed data preprocessing and feature engineering including
-          one-hot encoding and feature scaling with StandardScaler.
+          • Performed data preprocessing and feature engineering including one-hot encoding and feature scaling.
         </p>
 
         <div className="flex flex-wrap gap-3 mt-5">
@@ -36,17 +41,15 @@ export default function Projects() {
           <span className="tech-pill">Pickle</span>
         </div>
 
-        <br />
-
         <a
           href="https://project---wart-treatment-gh7exzv3va8liynunuxemu.streamlit.app/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-purple-600 hover:bg-purple-700 transition text-white font-medium"
+          className="inline-flex items-center gap-2 mt-8 px-8 py-3 rounded-full bg-purple-600 hover:bg-purple-700 transition text-white font-medium"
         >
           Live Demo →
         </a>
-      </div>
-    </motion.section>
+      </motion.div>
+    </section>
   );
 }
