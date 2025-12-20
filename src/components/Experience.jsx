@@ -2,23 +2,15 @@ import { motion } from "framer-motion";
 
 export default function Experience() {
   return (
-    <section
+    <motion.section
       id="experience"
       className="min-h-screen flex items-center justify-center px-6"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.96 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="
-          relative z-10
-          max-w-6xl w-full
-          glass
-          p-10 md:p-14
-          will-change-transform
-        "
-      >
+      <div className="relative z-10 max-w-6xl w-full glass p-10 md:p-14">
         <h2 className="text-3xl md:text-4xl font-bold mb-10">
           <span className="gradient-text">Experience</span>
         </h2>
@@ -28,13 +20,14 @@ export default function Experience() {
             <h3 className="text-xl font-semibold text-white">
               Web Development Intern — CODSOFT
             </h3>
-
             <p className="text-gray-400">09/2025 – 10/2025</p>
 
             <p className="mt-3 leading-relaxed">
-              • Built responsive and user-friendly web interfaces using modern frontend technologies with a focus on clean UI and usability.
+              • Built responsive and user-friendly web interfaces using modern
+              frontend technologies with a focus on clean UI and usability.
               <br />
-              • Used Git and GitHub for version control, collaboration, and maintaining well-documented codebases.
+              • Used Git and GitHub for version control, collaboration, and
+              maintaining well-documented codebases.
             </p>
 
             <div className="flex flex-wrap gap-3 mt-5">
@@ -55,7 +48,7 @@ export default function Experience() {
             </a>
           </div>
         </div>
-      </motion.div>
-    </section>
+      </div>
+    </motion.section>
   );
 }
