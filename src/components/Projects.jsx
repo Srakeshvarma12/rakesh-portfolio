@@ -50,9 +50,11 @@ export default function Projects() {
         {/* TECH STACK */}
             <div className="flex flex-wrap gap-3 mt-5">
               <span className="tech-pill">Python</span>
-              <span className="tech-pill">Machine Learning</span>
+              <span className="tech-pill">Pandas</span>
+              <span className="tech-pill">Numpy</span>
               <span className="tech-pill">Scikit-learn</span>
               <span className="tech-pill">Streamlit</span>
+              <span className="tech-pill">GitHub</span>
               <span className="tech-pill">Pickle</span>
             </div>
             <br />
