@@ -12,7 +12,7 @@ const experiences = [
     tech: ["HTML", "CSS", "JavaScript", "Git", "GitHub"],
     link: "https://srakeshvarma12.github.io/CODSOFT/",
   },
-  // You can add more experience objects here in the future
+  // Add more experience items here to see the stacking effect
 ];
 
 export default function Experience() {
@@ -20,19 +20,23 @@ export default function Experience() {
     <section id="experience" className="min-h-screen py-24 px-6 relative">
       <div className="max-w-4xl mx-auto">
         
-        {/* Title Section */}
+        {/* ========================================= */}
+        {/* 1. HEADING (OUTSIDE THE GLASS CARD)       */}
+        {/* ========================================= */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold">
             <span className="gradient-text">Experience</span>
           </h2>
         </motion.div>
 
-        {/* Stacked Cards Container */}
+        {/* ========================================= */}
+        {/* 2. CARDS CONTAINER                        */}
+        {/* ========================================= */}
         <div className="flex flex-col pb-24">
           {experiences.map((exp, index) => (
             <motion.div
@@ -41,10 +45,11 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              // STICKY LOGIC:
+              // Sticky Logic
               style={{ top: `calc(6rem + ${index * 20}px)` }} 
               className="sticky mb-12 last:mb-0"
             >
+              {/* THE GLASS CARD STARTS HERE */}
               <div className="glass p-8 md:p-12 w-full transition-transform duration-300">
                 
                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
@@ -62,7 +67,6 @@ export default function Experience() {
                   ))}
                 </div>
 
-                {/* Tech Stack Pills */}
                 <div className="flex flex-wrap gap-3 mb-8">
                   {exp.tech.map((tech) => (
                     <span key={tech} className="tech-pill">
@@ -71,7 +75,6 @@ export default function Experience() {
                   ))}
                 </div>
 
-                {/* View Work Button */}
                 {exp.link && (
                   <a
                     href={exp.link}
