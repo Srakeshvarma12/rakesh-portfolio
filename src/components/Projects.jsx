@@ -28,40 +28,39 @@ export default function Projects() {
     <section id="projects" className="min-h-screen py-24 px-6 relative">
       <div className="max-w-4xl mx-auto">
         
-        {/* HEADER */}
+        {/* HEADING - Fades in normally */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-16 text-center"
+          className="mb-20 text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold">
             <span className="gradient-text">Projects</span>
           </h2>
         </motion.div>
 
-        {/* PROJECTS LIST */}
+        {/* PROJECTS CONTAINER */}
         <div className="flex flex-col pb-24">
           {projects.map((project, index) => (
-            // 1. OUTER DIV: Handles Sticky Positioning (No Animation)
-            // We moved 'sticky' here so transforms don't break it.
+            // 1. STICKY CONTAINER (No Animation Here)
+            // This div handles the "sticking". It must NOT have framer-motion props.
             <div
               key={index}
               className="sticky mb-24 last:mb-0 w-full"
               style={{ 
-                // Base top offset (120px) + Dynamic stacking offset (40px per card)
-                top: `calc(120px + ${index * 40}px)` 
+                // This formula creates the stacking effect (Deck of cards)
+                top: `calc(150px + ${index * 40}px)` 
               }}
             >
-              {/* 2. INNER DIV: Handles Animation (Framer Motion) */}
+              {/* 2. ANIMATED CARD (Animation Inside) */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6 }}
+                viewport={{ once: true, margin: "-50px" }}
               >
-                {/* 3. CARD DESIGN */}
-                <div className="glass p-8 md:p-12 w-full border border-white/10 shadow-2xl backdrop-blur-xl">
+                <div className="glass p-8 md:p-12 w-full border border-white/10 shadow-2xl backdrop-blur-xl bg-black/40">
                   
                   <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
                     {project.title}
