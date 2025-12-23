@@ -4,105 +4,91 @@ const projects = [
   {
     title: "Cost-Sensitive Wart Treatment Recommendation System",
     description: [
-      "Built a machine-learning based decision support system to recommend optimal wart treatment methods by balancing treatment cost and effectiveness.",
-      "Performed data preprocessing and feature engineering including one-hot encoding of categorical variables and feature scaling with StandardScaler."
+      "Built a machine-learning based decision support system to recommend optimal wart treatment methods.",
+      "Performed preprocessing and feature engineering with StandardScaler.",
     ],
     tech: ["Python", "Machine Learning", "Scikit-learn", "Streamlit"],
     link: "https://project---wart-treatment-gh7exzv3va8liynunuxemu.streamlit.app/",
-    hasLink: true,
   },
   {
     title: "Netflix Movies and TV Shows Data Analysis using SQL",
     description: [
-      "Designed and implemented a relational schema in MySQL to analyze 8,800+ Netflix records, ensuring accurate querying and scalable data analysis.",
-      "Applied SQL-based data modeling and querying techniques to simulate backend-style data access patterns on a real-world media dataset."
+      "Designed a relational schema in MySQL for 8,800+ Netflix records.",
+      "Analyzed content distribution, trends, ratings, and durations.",
+      "Structured reusable SQL scripts with industry-style documentation.",
     ],
-    tech: ["MySQL", "SQL", "Data Analysis", "Database Design"],
-    link: "https://github.com/Srakeshvarma12/Netflix-SQL-Project/tree/main/Netflix-SQL-Project", 
-    hasLink: true,
+    tech: ["MySQL", "SQL", "Data Analysis"],
+    link: "https://github.com/your-github/netflix-sql-project",
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="min-h-screen py-24 px-6 relative">
-      <div className="max-w-4xl mx-auto">
-        
-        {/* HEADING - Fades in normally */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-20 text-center"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold">
-            <span className="gradient-text">Projects</span>
-          </h2>
-        </motion.div>
+    <section id="projects" className="relative py-32">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-20">
+        <span className="gradient-text">Projects</span>
+      </h2>
 
-        {/* PROJECTS CONTAINER */}
-        <div className="flex flex-col pb-24">
-          {projects.map((project, index) => (
-            // 1. STICKY CONTAINER (No Animation Here)
-            // This div handles the "sticking". It must NOT have framer-motion props.
-            <div
-              key={index}
-              className="sticky mb-24 last:mb-0 w-full"
-              style={{ 
-                // This formula creates the stacking effect (Deck of cards)
-                top: `calc(150px + ${index * 40}px)` 
-              }}
-            >
-              {/* 2. ANIMATED CARD (Animation Inside) */}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true, margin: "-50px" }}
-              >
-                <div className="glass p-8 md:p-12 w-full border border-white/10 shadow-2xl backdrop-blur-xl bg-black/40">
-                  
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
-                    {project.title}
-                  </h3>
-
-                  <div className="text-gray-300 leading-relaxed mb-8 space-y-3 text-lg">
-                    {project.description.map((point, i) => (
-                      <p key={i}>• {point}</p>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-3 mb-8">
-                    {project.tech.map((tech) => (
-                      <span key={tech} className="tech-pill">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {project.hasLink && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="
-                        inline-flex items-center gap-2
-                        px-8 py-3 rounded-full
-                        bg-[#a855f7] hover:bg-[#9333ea]
-                        transition text-white font-medium
-                        shadow-[0_0_20px_rgba(168,85,247,0.4)]
-                        hover:shadow-[0_0_30px_rgba(168,85,247,0.6)]
-                      "
-                    >
-                      View Project →
-                    </a>
-                  )}
-                </div>
-              </motion.div>
-            </div>
-          ))}
-        </div>
+      <div className="relative space-y-32">
+        {projects.map((project, index) => (
+          <StickyCard key={index} project={project} index={index} />
+        ))}
       </div>
     </section>
+  );
+}
+
+function StickyCard({ project, index }) {
+  return (
+    <motion.div
+      className="sticky top-28 flex justify-center"
+      initial={{ opacity: 0, y: 120 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.3 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      style={{ zIndex: 10 + index }}
+    >
+      <div
+        className="
+          glass
+          w-full max-w-5xl
+          p-10 md:p-14
+        "
+      >
+        <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4">
+          {project.title}
+        </h3>
+
+        <div className="text-gray-300 space-y-2 mb-6">
+          {project.description.map((line, i) => (
+            <p key={i}>• {line}</p>
+          ))}
+        </div>
+
+        {/* TECH STACK */}
+        <div className="flex flex-wrap gap-3 mb-8">
+          {project.tech.map((t) => (
+            <span key={t} className="tech-pill">
+              {t}
+            </span>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+            inline-flex items-center gap-2
+            px-8 py-3 rounded-full
+            bg-purple-600 hover:bg-purple-700
+            transition text-white font-medium
+          "
+        >
+          View Project →
+        </a>
+      </div>
+    </motion.div>
   );
 }
