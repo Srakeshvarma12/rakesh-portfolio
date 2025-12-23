@@ -12,7 +12,7 @@ const experiences = [
     tech: ["HTML", "CSS", "JavaScript", "Git", "GitHub"],
     link: "https://srakeshvarma12.github.io/CODSOFT/",
   },
-  // Add more experience items here to see the stacking effect
+  // Add more experience items here
 ];
 
 export default function Experience() {
@@ -20,9 +20,7 @@ export default function Experience() {
     <section id="experience" className="min-h-screen py-24 px-6 relative">
       <div className="max-w-4xl mx-auto">
         
-        {/* ========================================= */}
-        {/* 1. HEADING (OUTSIDE THE GLASS CARD)       */}
-        {/* ========================================= */}
+        {/* HEADING (Outside the card) */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,9 +32,7 @@ export default function Experience() {
           </h2>
         </motion.div>
 
-        {/* ========================================= */}
-        {/* 2. CARDS CONTAINER                        */}
-        {/* ========================================= */}
+        {/* Stacked Cards Container */}
         <div className="flex flex-col pb-24">
           {experiences.map((exp, index) => (
             <motion.div
@@ -45,18 +41,18 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              // Sticky Logic
               style={{ top: `calc(6rem + ${index * 20}px)` }} 
               className="sticky mb-12 last:mb-0"
             >
-              {/* THE GLASS CARD STARTS HERE */}
               <div className="glass p-8 md:p-12 w-full transition-transform duration-300">
                 
-                <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                {/* HEADER: Role — Company */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-3">
                   <h3 className="text-2xl md:text-3xl font-bold text-white">
-                    {exp.role} <span className="text-purple-400">@ {exp.company}</span>
+                    {exp.role} <span className="text-gray-500 mx-2">—</span> <span className="text-purple-400">{exp.company}</span>
                   </h3>
-                  <span className="text-gray-400 font-medium whitespace-nowrap bg-white/5 px-4 py-1 rounded-full border border-white/10">
+                  
+                  <span className="text-gray-400 font-medium whitespace-nowrap bg-white/5 px-4 py-1 rounded-full border border-white/10 w-fit">
                     {exp.duration}
                   </span>
                 </div>
