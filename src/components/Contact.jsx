@@ -48,24 +48,29 @@ export default function Contact() {
   };
 
   return (
-    <section
-      id="contact"
-      className="min-h-screen px-6 py-24 flex items-center justify-center"
-    >
+    <section id="contact" className="min-h-screen px-6 py-24 flex flex-col items-center justify-center">
+      
+      {/* 1. HEADING (Outside the glass box) */}
       <motion.div
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
-  viewport={{ once: false, amount: 0.3 }}
-  className="glass max-w-4xl w-full rounded-3xl p-10 md:p-14"
->
-
-        {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold mb-3">
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="mb-16 text-center"
+      >
+        <h2 className="text-4xl md:text-5xl font-bold">
           Contact <span className="gradient-text">Me</span>
         </h2>
+      </motion.div>
 
-        <p className="text-gray-300 mb-8 max-w-xl">
+      {/* 2. GLASS CONTENT BOX */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.3 }}
+        className="glass max-w-4xl w-full rounded-3xl p-10 md:p-14 border border-white/10"
+      >
+        <p className="text-gray-300 mb-8 max-w-xl text-lg">
           Have a question or want to work together? Send a message or reach me
           directly via email.
         </p>
@@ -127,7 +132,7 @@ export default function Contact() {
               px-10 py-4 rounded-full
               bg-purple-600 hover:bg-purple-700
               transition font-semibold text-white
-              disabled:opacity-50
+              disabled:opacity-50 shadow-lg shadow-purple-900/20
             "
           >
             {loading ? "Sending..." : "Send Message"}
