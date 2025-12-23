@@ -1,4 +1,3 @@
-import ScrollSection from "./ScrollSection";
 import { motion } from "framer-motion";
 import profileImg from "../assets/profile.jpg";
 import {
@@ -8,79 +7,87 @@ import {
 
 export default function About() {
   return (
-    <ScrollSection id="about">
-      <motion.section
-        className="min-h-screen flex items-center justify-center px-6"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+    <section id="about" className="min-h-screen py-24 px-6 flex flex-col justify-center items-center">
+      
+      {/* 1. HEADING (Outside the glass box) */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="mb-16 text-center"
+      >
+        <h2 className="text-4xl md:text-5xl font-bold">
+          About <span className="gradient-text">Me</span>
+        </h2>
+      </motion.div>
+
+      {/* 2. GLASS CONTENT BOX */}
+      <motion.div
+        className="relative z-10 max-w-6xl w-full grid md:grid-cols-2 gap-12 glass p-10 md:p-14 border border-white/10"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: false, amount: 0.2 }}
       >
-        <div className="relative z-10 max-w-6xl w-full grid md:grid-cols-2 gap-12 glass p-10 md:p-14">
-          {/* LEFT */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <img
-              src={profileImg}
-              alt="Rakesh Varma"
-              className="w-44 h-44 rounded-2xl object-cover border border-white/20 mb-6"
-            />
+        {/* LEFT COLUMN: Image & Bio */}
+        <div className="flex flex-col items-center md:items-start text-center md:text-left">
+          <img
+            src={profileImg}
+            alt="Rakesh Varma"
+            className="w-44 h-44 rounded-2xl object-cover border border-white/20 mb-8 shadow-2xl"
+          />
 
-           <p className="text-gray-300 leading-relaxed">
+          <p className="text-gray-300 leading-relaxed mb-4 text-lg">
             I’m a Computer Science Engineering student with strong fundamentals
             in Python and frontend development. I enjoy building clean,
             responsive interfaces and logic-driven applications.
           </p>
 
-          <p className="text-gray-300 leading-relaxed ">
+          <p className="text-gray-300 leading-relaxed text-lg">
             Through internships and academic projects, I’ve gained hands-on
             experience with modern web technologies, version control, and
             structured development practices.
           </p>
           
-            <span className="text-sm text-gray-400 flex items-center gap-2 mt-4">
-              📍 Andhra Pradesh, India
-            </span>
+          <span className="text-sm text-gray-400 flex items-center gap-2 mt-6 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+            📍 Andhra Pradesh, India
+          </span>
+        </div>
+
+        {/* RIGHT COLUMN: Education & Tech Stack */}
+        <div>
+          <div className="mb-10">
+            <h3 className="text-2xl font-semibold mb-4 text-white border-b border-white/10 pb-2 inline-block">Education</h3>
+            <p className="font-bold text-xl text-white">
+              Bachelor of Technology in Computer Science Engineering
+            </p>
+            <p className="text-purple-400 font-medium mt-1">GITAM University, Bangalore</p>
+            <p className="text-gray-400 text-sm mt-1">2021 – 2025</p>
           </div>
 
-          {/* RIGHT */}
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">
-              About <span className="gradient-text">Me</span>
-            </h2>
-
-            <div className="mb-10">
-              <h3 className="text-xl font-semibold mb-3">Education</h3>
-              <p className="font-medium text-white">
-                Bachelor of Technology in Computer Science Engineering
-              </p>
-              <p className="text-gray-400">GITAM University, Bangalore</p>
-              <p className="text-gray-400">2021 – 2025</p>
-            </div>
-
-            <h3 className="text-xl font-semibold mb-4">Tech Stack</h3>
-            <div className="flex flex-wrap gap-3">
-              <Skill icon={<SiPython />} name="Python" />
-              <Skill icon={<SiHtml5 />} name="HTML" />
-              <Skill icon={<SiCss3 />} name="CSS" />
-              <Skill icon={<SiJavascript />} name="JavaScript" />
-              <Skill icon={<SiReact />} name="ReactJS" />
-              <Skill icon={<SiTailwindcss />} name="Tailwind CSS" />
-              <Skill icon={<SiMysql />} name="MySQL" />
-              <Skill icon={<SiGit />} name="Git" />
-              <Skill icon={<SiGithub />} name="GitHub" />
-              <Skill icon={<SiVercel />} name="Vercel" />
-            </div>
+          <h3 className="text-2xl font-semibold mb-6 text-white border-b border-white/10 pb-2 inline-block">Tech Stack</h3>
+          <div className="flex flex-wrap gap-3">
+            <Skill icon={<SiPython />} name="Python" />
+            <Skill icon={<SiHtml5 />} name="HTML" />
+            <Skill icon={<SiCss3 />} name="CSS" />
+            <Skill icon={<SiJavascript />} name="JavaScript" />
+            <Skill icon={<SiReact />} name="ReactJS" />
+            <Skill icon={<SiTailwindcss />} name="Tailwind CSS" />
+            <Skill icon={<SiMysql />} name="MySQL" />
+            <Skill icon={<SiGit />} name="Git" />
+            <Skill icon={<SiGithub />} name="GitHub" />
+            <Skill icon={<SiVercel />} name="Vercel" />
           </div>
         </div>
-      </motion.section>
-    </ScrollSection>
+      </motion.div>
+    </section>
   );
 }
 
 function Skill({ icon, name }) {
   return (
-    <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/20 text-sm text-white">
-      <span className="text-base">{icon}</span>
+    <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/20 text-sm text-white hover:bg-white/10 transition cursor-default">
+      <span className="text-lg text-purple-400">{icon}</span>
       {name}
     </div>
   );
