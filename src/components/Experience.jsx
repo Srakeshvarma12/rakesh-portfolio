@@ -12,19 +12,7 @@ const experiences = [
     tech: ["HTML", "CSS", "JavaScript", "Git", "GitHub"],
     link: "https://srakeshvarma12.github.io/CODSOFT/",
   },
-  // 🔽 TEMPORARY PLACEHOLDER (Delete this later) 🔽
-  // I added this so you can SEE the stacking effect work!
-  {
-    role: "Frontend Developer", 
-    company: "Demo Mode",
-    duration: "Present",
-    description: [
-      "This is a demo card to test the stacking effect.",
-      "Scroll down and you will see this card slide OVER the Codsoft card."
-    ],
-    tech: ["React", "Demo", "Testing"],
-    link: "#",
-  }
+  // Add more experience items here
 ];
 
 export default function Experience() {
@@ -32,7 +20,7 @@ export default function Experience() {
     <section id="experience" className="min-h-screen py-24 px-6 relative">
       <div className="max-w-4xl mx-auto">
         
-        {/* HEADING (Centered & Outside the cards, just like Projects) */}
+        {/* HEADING (Outside the card) */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -44,7 +32,7 @@ export default function Experience() {
           </h2>
         </motion.div>
 
-        {/* STACK CONTAINER */}
+        {/* Stacked Cards Container */}
         <div className="flex flex-col pb-24">
           {experiences.map((exp, index) => (
             <motion.div
@@ -53,14 +41,12 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              // 🔒 STICKY LOGIC
-              style={{ top: `calc(150px + ${index * 30}px)` }} 
-              className="sticky mb-24 last:mb-0 self-start w-full"
+              style={{ top: `calc(6rem + ${index * 20}px)` }} 
+              className="sticky mb-12 last:mb-0"
             >
-              {/* CARD DESIGN */}
-              <div className="glass p-8 md:p-12 w-full border border-white/10 shadow-2xl backdrop-blur-xl">
+              <div className="glass p-8 md:p-12 w-full transition-transform duration-300">
                 
-                {/* Header: Role — Company */}
+                {/* HEADER: Role — Company */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-3">
                   <h3 className="text-2xl md:text-3xl font-bold text-white">
                     {exp.role} <span className="text-gray-500 mx-2">—</span> <span className="text-purple-400">{exp.company}</span>
@@ -71,14 +57,12 @@ export default function Experience() {
                   </span>
                 </div>
 
-                {/* Description */}
                 <div className="text-gray-300 leading-relaxed mb-8 space-y-3 text-lg">
                   {exp.description.map((point, i) => (
                     <p key={i}>• {point}</p>
                   ))}
                 </div>
 
-                {/* Tech Pills */}
                 <div className="flex flex-wrap gap-3 mb-8">
                   {exp.tech.map((tech) => (
                     <span key={tech} className="tech-pill">
@@ -87,7 +71,6 @@ export default function Experience() {
                   ))}
                 </div>
 
-                {/* Button */}
                 {exp.link && (
                   <a
                     href={exp.link}
