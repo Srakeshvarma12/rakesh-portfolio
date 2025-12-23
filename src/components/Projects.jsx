@@ -1,77 +1,102 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+
+const projects = [
+  {
+    title: "Cost-Sensitive Wart Treatment Recommendation System",
+    description: [
+      "Built a machine-learning based decision support system to recommend optimal wart treatment methods.",
+      "Performed preprocessing and feature engineering with StandardScaler.",
+    ],
+    tech: ["Python", "Machine Learning", "Scikit-learn", "Streamlit"],
+    link: "https://project---wart-treatment-gh7exzv3va8liynunuxemu.streamlit.app/",
+  },
+  {
+    title: "Netflix Movies and TV Shows Data Analysis using SQL",
+    description: [
+      "Designed a relational schema in MySQL for 8,800+ Netflix records.",
+      "Analyzed content distribution, trends, ratings, and durations.",
+      "Structured reusable SQL scripts with industry-style documentation.",
+    ],
+    tech: ["MySQL", "SQL", "Data Analysis"],
+    link: "https://github.com/Srakeshvarma12/Netflix-SQL-Project/tree/main/Netflix-SQL-Project", // optional
+  },
+];
 
 export default function Projects() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
   return (
-    <motion.section
+    <section
       id="projects"
-      className="min-h-screen flex items-center justify-center px-6"
-      initial={{ opacity: 0, y: 120 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, ease: "easeOut" }}
-      viewport={{ once: false, amount: 0.2 }}
+      ref={containerRef}
+      className="relative min-h-[200vh] px-6"
     >
-      <div
-        className="
-          relative z-10
-          max-w-6xl w-full
-          glass
-          p-10 md:p-14
-        "
-      >
-        <h2 className="text-3xl md:text-4xl font-bold mb-8">
-          <span className="gradient-text">Projects</span>
-        </h2>
+      {projects.map((project, index) => {
+        const y = useTransform(
+          scrollYProgress,
+          [index * 0.3, index * 0.3 + 0.3],
+          [100, 0]
+        );
 
-        <h3 className="text-2xl font-semibold text-white mb-4">
-          Cost-Sensitive Wart Treatment Recommendation System
-        </h3>
+        const scale = useTransform(
+          scrollYProgress,
+          [index * 0.3, index * 0.3 + 0.3],
+          [0.95, 1]
+        );
 
-        <p className="text-gray-300 leading-relaxed mb-8">
-        • Built a machine-learning based decision support system to recommend
-          optimal wart treatment methods by balancing treatment cost and
-          effectiveness. <br />
-        • Performed data preprocessing and feature engineering including one-hot encoding of categorical variables
-          and feature scaling with StandardScaler, ensuring consistency between training and inference pipelines.
-        </p>
+        return (
+          <motion.div
+            key={index}
+            style={{ y, scale }}
+            className="
+              sticky top-24
+              mx-auto max-w-6xl
+              glass
+              p-10 md:p-14
+              mb-24
+            "
+          >
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+              {project.title}
+            </h2>
 
-        {/* <div className="flex flex-wrap gap-3 mb-10">
-          {["Python", "Machine Learning", "Scikit-learn", "Streamlit"].map(
-            tech => (
-              <span
-                key={tech}
-                className="px-4 py-1 rounded-full text-sm bg-white/10 border border-white/20 text-gray-200"
-              >
-                {tech}
-              </span>
-            )
-          )}
-        </div> */}
+            <ul className="text-gray-300 space-y-2 mb-6">
+              {project.description.map((line, i) => (
+                <li key={i}>• {line}</li>
+              ))}
+            </ul>
 
-        {/* TECH STACK */}
-            <div className="flex flex-wrap gap-3 mt-5">
-              <span className="tech-pill">Python</span>
-              <span className="tech-pill">Pandas</span>
-              <span className="tech-pill">Numpy</span>
-              <span className="tech-pill">Scikit-learn</span>
-              <span className="tech-pill">Streamlit</span>
-              <span className="tech-pill">GitHub</span>
-              <span className="tech-pill">Pickle</span>
+            <div className="flex flex-wrap gap-3 mb-6">
+              {project.tech.map((tech) => (
+                <span key={tech} className="tech-pill">
+                  {tech}
+                </span>
+              ))}
             </div>
-            <br />
-        <a
-          href="https://project---wart-treatment-gh7exzv3va8liynunuxemu.streamlit.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-            inline-flex items-center gap-2
-            px-8 py-3 rounded-full
-            bg-purple-600 hover:bg-purple-700
-            transition text-white font-medium
-          "
-        >
-          Live Demo →
-        </a>
-      </div>
-    </motion.section>
+
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  inline-flex items-center gap-2
+                  px-8 py-3 rounded-full
+                  bg-purple-600 hover:bg-purple-700
+                  transition text-white font-medium
+                "
+              >
+                View Project →
+              </a>
+            )}
+          </motion.div>
+        );
+      })}
+    </section>
   );
 }
