@@ -20,6 +20,17 @@ const projects = [
     tech: ["MySQL", "SQL", "Data Analysis"],
     link: "https://github.com/your-github/netflix-sql-project",
   },
+
+  {
+    title: "Netflix Movies and TV Shows Data Analysis using SQL",
+    description: [
+      "Designed a relational schema in MySQL for 8,800+ Netflix records.",
+      "Analyzed content distribution, trends, ratings, and durations.",
+      "Structured reusable SQL scripts with industry-style documentation.",
+    ],
+    tech: ["MySQL", "SQL", "Data Analysis"],
+    link: "https://github.com/your-github/netflix-sql-project",
+  },
 ];
 
 export default function Projects() {
