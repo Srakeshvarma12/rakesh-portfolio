@@ -28,7 +28,7 @@ const projects = [
       "Built an end-to-end Selenium automation framework for an e-commerce web application using Python and Pytest, automating core user flows such as login, add-to-cart, and checkout.",
       "Implemented the Page Object Model (POM) for better test maintainability and generated HTML test reports to validate execution results."
     ],
-    tech: ["Python, Selenium WebDriver, Pytest, POM, pytest-html, Git, GitHub"],
+    tech: ["Python", "Selenium WebDriver", "Pytest", "POM", "pytest-html", "Git", "GitHub"],
     link: "https://github.com/Srakeshvarma12/ecommerce-automation-testing",
     hasLink: true,
   },
