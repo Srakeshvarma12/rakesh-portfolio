@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { link } from "framer-motion/client";
 
 const projects = [
   {
@@ -19,6 +20,16 @@ const projects = [
     ],
     tech: ["MySQL", "SQL", "Data Analysis", "Database Design"],
     link: "https://github.com/Srakeshvarma12/Netflix-SQL-Project/tree/main/Netflix-SQL-Project", 
+    hasLink: true,
+  },
+  {
+    title: "E-Commerce Web Application Automation Testing",
+    description:[
+      "Built an end-to-end Selenium automation framework for an e-commerce web application using Python and Pytest, automating core user flows such as login, add-to-cart, and checkout.",
+      "Implemented the Page Object Model (POM) for better test maintainability and generated HTML test reports to validate execution results."
+    ],
+    tech: ["Python, Selenium WebDriver, Pytest, POM, pytest-html, Git, GitHub"],
+    link: "https://github.com/Srakeshvarma12/ecommerce-automation-testing",
     hasLink: true,
   },
 ];
