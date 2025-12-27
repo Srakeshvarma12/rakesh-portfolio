@@ -30,7 +30,7 @@ export default function Hero() {
         <div className="flex gap-4 justify-center mt-8">
           {/* Resume Button */}
           <a
-            href="https://1drv.ms/b/c/9497be968dad6f4b/IQCZjgHbd8WrT6t4RN2_i9mwAQ3HBi19KWQZa7dQl6z_w94?e=0WlAD1"
+            href="https://1drv.ms/b/c/9497be968dad6f4b/IQBbuNVU-brKT5x6EuFcanWdAeR2Pbn9eH3MrcTO12_bbAE?e=SF7SqW"
             target="_blank"
             rel="noopener noreferrer"
             className="
